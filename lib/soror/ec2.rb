@@ -1,4 +1,3 @@
-require 'aws-sdk-v1'
 require 'soror/ec2/instance'
 
 module Soror
