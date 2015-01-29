@@ -27,6 +27,26 @@ Or install it yourself as:
 Soror::EC2::Instance.search_by('Name' => 'Soror') #=> [<AWS::EC2::Instance>, ...]
 ```
 
+### Configuration
+
+```ruby
+Soror.config(access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 'ap-northeast-1')
+```
+
+## Required permissions
+
+```js
+{
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    }
+  }
+}
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/kirikiriyamama/soror/fork )
