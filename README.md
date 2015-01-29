@@ -1,6 +1,6 @@
 # Soror
 
-Soror is EC2 instances searcher, EC2 instances is searched by tags
+Soror is EC2 instances searcher, EC2 instances are searched by tags
 
 ## Installation
 
@@ -21,7 +21,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-# Search for EC2 instances that have the tag { "Key": "Name", "Value": "Soror" }
+# Search for EC2 instances which have the tag `{ "Key": "Name", "Value": "Soror" }`
 # You can use methods of AWS::EC2::Instance to an element of return value
 # See http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/EC2/Instance.html
 Soror::EC2::Instance.search_by('Name' => 'Soror') #=> [<AWS::EC2::Instance>, ...]
