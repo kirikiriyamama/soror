@@ -7,7 +7,7 @@ module Soror
         AWS.memoize do
           ec2.instances.
             filter('instance-state-name', 'running').
-            select{ |i| tags.all?{ |k, v| i.tags[k] == v } }
+            select{ |i| tags.all?{ |k, v| i.tags[k.to_s] == v.to_s } }
         end
       end
     end

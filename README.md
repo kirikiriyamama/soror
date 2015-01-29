@@ -21,10 +21,10 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-# Search for EC2 instances which have the tag `{ "Key": "Name", "Value": "Soror" }`
+# Search for EC2 instances which have the tag `{ "Key": "name", "Value": "soror" }`
 # You can use methods of AWS::EC2::Instance to an element of return value
 # See http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/EC2/Instance.html
-Soror::EC2::Instance.search_by('Name' => 'Soror') #=> [<AWS::EC2::Instance>, ...]
+Soror::EC2::Instance.search_by(name: 'soror') #=> [<AWS::EC2::Instance>, ...]
 ```
 
 ### Configuration
