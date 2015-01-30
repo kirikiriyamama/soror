@@ -43,7 +43,7 @@ Soror.config(access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 'ap-nor
       "Action": "ec2:Describe*",
       "Resource": "*"
     }
-  }
+  ]
 }
 ```
 
