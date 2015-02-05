@@ -1,6 +1,6 @@
 # Soror
 
-Soror is EC2 instances searcher, EC2 instances are searched by tags
+Search for EC2 instances by tags :mag_right:
 
 ## Installation
 

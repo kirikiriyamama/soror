@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Soror::VERSION
   spec.authors       = ["kirikiriyamama"]
   spec.email         = ["kirikiriyamama@icloud.com"]
-  spec.summary       = %q{Soror is EC2 instances seacher}
+  spec.summary       = %q{Search for EC2 instances by tags}
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/kirikiriyamama/soror"
   spec.license       = "MIT"
