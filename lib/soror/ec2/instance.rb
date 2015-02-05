@@ -4,6 +4,7 @@ module Soror
       extend Soror::EC2
 
       def self.search_by(tags)
+        warn %q{[DEPRECATION] `Soror::EC2::Instance.search_by` won't be memoized. If you want to memoize, use `Soror.start_memoizing`.}
         AWS.memoize do
           ec2.instances.
             filter('instance-state-name', 'running').

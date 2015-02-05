@@ -1,11 +1,13 @@
 require 'aws-sdk-v1'
+require 'forwardable'
 require 'soror/ec2'
 require 'soror/version'
 require 'yaml'
 
 module Soror
-  def self.config(options)
-    AWS.config(options)
+  class << self
+    extend Forwardable
+    def_delegators AWS, :config, :start_memoizing, :stop_memoizing
   end
 end
 

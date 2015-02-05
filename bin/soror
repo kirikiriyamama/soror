@@ -22,6 +22,7 @@ fail OptionParser::MissingArgument, '--attributes' if options[:attributes].nil?
 fail OptionParser::InvalidArgument, '--attributes' if options[:attributes].empty?
 
 Soror.config(options[:config])
+Soror.start_memoizing
 
 instances = Soror::EC2::Instance.search_by(options[:tag])
 exit! if instances.empty?

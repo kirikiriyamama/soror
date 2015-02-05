@@ -43,6 +43,12 @@ region: 'ap-northeast-1'
 EOS
 ```
 
+### Memoization
+
+```ruby
+Soror.start_memoizing
+```
+
 ## CLI
 
 ```
