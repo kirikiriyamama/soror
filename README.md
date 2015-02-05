@@ -33,6 +33,16 @@ Soror::EC2::Instance.search_by(name: 'soror') #=> [<AWS::EC2::Instance>, ...]
 Soror.config(access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 'ap-northeast-1')
 ```
 
+Or put the configuration file on your home directory as:
+
+```sh
+cat <<EOS >$HOME/.soror
+access_key_id: 'xxxxx'
+secret_access_key: 'xxxxx'
+region: 'ap-northeast-1'
+EOS
+```
+
 ## CLI
 
 ```
