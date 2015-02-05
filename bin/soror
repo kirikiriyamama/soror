@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'soror'
+
+options = { header: true, tag: {}, config: {} }
+
+OptionParser.new do |opt|
+  opt.on('-t', '--tag=\'KEY=VALUE\'', /\A[^=]+=[^=]+\z/) do |v|
+    key, val = v.split('=')
+    options[:tag][key] = val
+  end
+  opt.on('-a', '--attributes=ATTR,ATTR,...', Array) { |v| options[:attributes] = v }
+  opt.on('--[no-]header') { |v| options[:header] = v }
+  opt.on('--access-key=KEY') { |v| options[:config][:access_key_id] = v }
+  opt.on('--secret-key=KEY') { |v| options[:config][:secret_access_key] = v }
+  opt.on('--region=REGION') { |v| options[:config][:region] = v }
+  opt.parse!(ARGV)
+end
+fail OptionParser::MissingArgument, '--tag'        if options[:tag].empty?
+fail OptionParser::MissingArgument, '--attributes' if options[:attributes].nil?
+fail OptionParser::InvalidArgument, '--attributes' if options[:attributes].empty?
+
+Soror.config(options[:config])
+
+instances = Soror::EC2::Instance.search_by(options[:tag])
+exit! if instances.empty?
+
+result = instances.map{ |i| options[:attributes].map{ |a| i.send(a.intern) || '' } }
+result.unshift(options[:attributes]) if options[:header]
+
+width = result.transpose.map{ |row| row.map(&:length).max }
+result.each{ |line| puts line.zip(width).map{ |a, w| a.ljust(w) }.join(' ') }

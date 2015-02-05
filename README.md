@@ -33,6 +33,18 @@ Soror::EC2::Instance.search_by(name: 'soror') #=> [<AWS::EC2::Instance>, ...]
 Soror.config(access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 'ap-northeast-1')
 ```
 
+## CLI
+
+```
+Usage: soror [options]
+    -t, --tag='KEY=VALUE'
+    -a, --attributes=ATTR,ATTR,...
+        --[no-]header
+        --access-key=KEY
+        --secret-key=KEY
+        --region=REGION
+```
+
 ## Required permissions
 
 ```js
