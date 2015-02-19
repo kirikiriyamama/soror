@@ -22,15 +22,15 @@ Or install it yourself as:
 
 ```ruby
 # Search for EC2 instances which have the tag `{ "Key": "name", "Value": "soror" }`
-# You can use methods of AWS::EC2::Instance to an element of return value
-# See http://docs.aws.amazon.com/AWSRubySDK/latest/AWS/EC2/Instance.html
-Soror::EC2::Instance.search_by(name: 'soror') #=> [<AWS::EC2::Instance>, ...]
+# You can use methods of Aws::EC2::Instance to an element of return value
+# See http://docs.aws.amazon.com/sdkforruby/api/Aws/EC2/Instance.html
+Soror::EC2::Instance.search_by(name: 'soror') #=> [<Aws::EC2::Instance>, ...]
 ```
 
 ### Configuration
 
 ```ruby
-Soror.config(access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 'ap-northeast-1')
+Soror.config = { access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 'ap-northeast-1' }
 ```
 
 Or put the configuration file on your home directory as:
@@ -41,12 +41,6 @@ access_key_id: 'xxxxx'
 secret_access_key: 'xxxxx'
 region: 'ap-northeast-1'
 EOS
-```
-
-### Memoization
-
-```ruby
-Soror.start_memoizing
 ```
 
 ## CLI
