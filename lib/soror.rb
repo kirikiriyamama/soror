@@ -22,12 +22,7 @@ end
 module Soror
   class << self
     extend Forwardable
-    def_delegators Aws, :config=
-
-    def config(hash)
-      warn '[DEPRECATION] `Soror.config` will be removed. Please use `Soror.config=` instead.'
-      hash.symbolize_keys.each{ |k, v| Aws.config[k] = v }
-    end
+    def_delegators Aws, :config, :config=
   end
 end
 
