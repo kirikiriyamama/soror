@@ -36,7 +36,7 @@ Soror.config.update(access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 
 Or put the configuration file on your home directory as:
 
 ```sh
-cat <<EOS >$HOME/.soror
+$ cat <<EOS >$HOME/.soror
 access_key_id: 'xxxxx'
 secret_access_key: 'xxxxx'
 region: 'ap-northeast-1'
@@ -46,6 +46,7 @@ EOS
 ## CLI
 
 ```
+$ soror --help
 Usage: soror [options]
     -t, --tag='KEY=VALUE'
     -a, --attributes=ATTR,ATTR,...
@@ -53,6 +54,7 @@ Usage: soror [options]
         --access-key=KEY
         --secret-key=KEY
         --region=REGION
+    -v, --version
 ```
 
 ## Required permissions
