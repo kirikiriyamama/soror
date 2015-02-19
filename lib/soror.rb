@@ -32,7 +32,5 @@ module Soror
 end
 
 File.expand_path('~/.soror').tap do |path|
-  if File.exists?(path)
-    Soror.config = YAML.load_file(path).symbolize_keys
-  end
+  Soror.config.update(YAML.load_file(path).symbolize_keys) if File.exists?(path)
 end

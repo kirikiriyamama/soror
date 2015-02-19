@@ -21,7 +21,7 @@ fail OptionParser::MissingArgument, '--tag'        if options[:tag].empty?
 fail OptionParser::MissingArgument, '--attributes' if options[:attributes].nil?
 fail OptionParser::InvalidArgument, '--attributes' if options[:attributes].empty?
 
-Soror.config(options[:config])
+Soror.config.update(options[:config])
 
 instances = Soror::EC2::Instance.search_by(options[:tag])
 exit! if instances.empty?

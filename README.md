@@ -30,7 +30,7 @@ Soror::EC2::Instance.search_by(name: 'soror') #=> [<Aws::EC2::Instance>, ...]
 ### Configuration
 
 ```ruby
-Soror.config = { access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 'ap-northeast-1' }
+Soror.config.update(access_key_id: 'xxxxx', secret_access_key: 'xxxxx', region: 'ap-northeast-1')
 ```
 
 Or put the configuration file on your home directory as:
