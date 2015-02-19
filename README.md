@@ -54,7 +54,6 @@ Usage: soror [options]
         --access-key=KEY
         --secret-key=KEY
         --region=REGION
-    -v, --version
 ```
 
 ## Required permissions
