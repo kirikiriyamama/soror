@@ -48,6 +48,11 @@ Usage: soror [options]
         --access-key=KEY
         --secret-key=KEY
         --region=REGION
+
+$ soror --profile-name 'kirikiriyamama' --region 'ap-northeast-1' --tag 'name=soror' --attributes 'instance_id,public_ip_address'
+instance_id public_ip_address
+i-xxxxx     xxx.xxx.xxx.xxx
+i-xxxxx     xxx.xxx.xxx.xxx
 ```
 
 ## Required permissions
