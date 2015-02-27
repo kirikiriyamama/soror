@@ -5,7 +5,7 @@ require 'soror'
 
 Version = Soror::VERSION
 
-options = { header: true, config: {}, credentials: {}, tag: {} }
+options = { header: true, attributes: [], config: {}, credentials: {}, tag: {} }
 OptionParser.new do |opt|
   opt.on('-t', '--tag=\'KEY=VALUE\'', /\A[^=]+=[^=]+\z/) do |v|
     warn '[DEPRECATION] The option `--tag` will be removed. Please use `--tags` instead.'
@@ -18,7 +18,7 @@ OptionParser.new do |opt|
       options[:tag][key] = val
     end
   end
-  opt.on('-a', '--attributes=ATTR,ATTR,...', Array) { |v| options[:attributes] = v }
+  opt.on('-a', '--attributes=ATTR,ATTR,...', Array) { |a| options[:attributes] = a }
   opt.on('--[no-]header') { |v| options[:header] = v }
   opt.on('--profile-name=NAME') { |v| options[:credentials][:profile_name] = v }
   opt.on('--credentials-path=PATH') { |v| options[:credentials][:path] = v }
@@ -28,7 +28,6 @@ OptionParser.new do |opt|
   opt.parse!(ARGV)
 end
 fail OptionParser::MissingArgument, '--tag'        if options[:tag].empty?
-fail OptionParser::MissingArgument, '--attributes' if options[:attributes].nil?
 fail OptionParser::InvalidArgument, '--attributes' if options[:attributes].empty?
 
 unless options[:credentials].empty?
