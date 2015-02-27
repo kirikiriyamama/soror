@@ -28,5 +28,8 @@ module Soror
 end
 
 File.expand_path('~/.soror').tap do |path|
-  Soror.config.update(YAML.load_file(path).symbolize_keys) if File.exists?(path)
+  if File.exists?(path)
+    warn '[DEPRECATION] Support of `~/.soror` will be removed. Please use such as `~/.aws/credentials` instead.'
+    Soror.config.update(YAML.load_file(path).symbolize_keys)
+  end
 end

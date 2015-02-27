@@ -5,7 +5,7 @@ require 'soror'
 
 Version = Soror::VERSION
 
-options = { header: true, tag: {}, config: {} }
+options = { header: true, config: {}, credentials: {}, tag: {} }
 OptionParser.new do |opt|
   opt.on('-t', '--tag=\'KEY=VALUE\'', /\A[^=]+=[^=]+\z/) do |v|
     key, val = v.split('=')
@@ -13,6 +13,8 @@ OptionParser.new do |opt|
   end
   opt.on('-a', '--attributes=ATTR,ATTR,...', Array) { |v| options[:attributes] = v }
   opt.on('--[no-]header') { |v| options[:header] = v }
+  opt.on('--profile-name=NAME') { |v| options[:credentials][:profile_name] = v }
+  opt.on('--credentials-path=PATH') { |v| options[:credentials][:path] = v }
   opt.on('--access-key=KEY') { |v| options[:config][:access_key_id] = v }
   opt.on('--secret-key=KEY') { |v| options[:config][:secret_access_key] = v }
   opt.on('--region=REGION') { |v| options[:config][:region] = v }
@@ -22,6 +24,9 @@ fail OptionParser::MissingArgument, '--tag'        if options[:tag].empty?
 fail OptionParser::MissingArgument, '--attributes' if options[:attributes].nil?
 fail OptionParser::InvalidArgument, '--attributes' if options[:attributes].empty?
 
+unless options[:credentials].empty?
+  options[:config][:credentials] = Aws::SharedCredentials.new(options[:credentials])
+end
 Soror.config.update(options[:config])
 
 instances = Soror::EC2::Instance.search_by(options[:tag])
