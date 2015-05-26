@@ -50,11 +50,19 @@ Usage: soror [options]
         --access-key=KEY
         --secret-key=KEY
         --region=REGION
+```
 
+### Example
+
+```
 $ soror --profile-name 'kirikiriyamama' --region 'ap-northeast-1' --tag 'name=soror' --attributes 'instance_id,public_ip_address'
 instance_id public_ip_address
 i-xxxxx     xxx.xxx.xxx.xxx
 i-xxxxx     xxx.xxx.xxx.xxx
+```
+
+```
+$ ssh -i ~/.ssh/id_rsa ec2-user@$(soror --region 'ap-northeast-1' --tag 'key=value' --attributes 'public_ip_address' --no-header | peco)
 ```
 
 ## Required permissions
