@@ -37,6 +37,8 @@ In addition, Soror supports [a new and standardized way to manage credentials](h
 
 ## CLI
 
+`ATTR` is an instance method name of `Aws::EC2::Instance`
+
 ```
 $ soror --help
 Usage: soror [options]
