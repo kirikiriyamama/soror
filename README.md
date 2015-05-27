@@ -12,11 +12,15 @@ gem 'soror'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install soror
+```
+$ gem install soror
+```
 
 ## Usage
 
