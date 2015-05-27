@@ -7,11 +7,6 @@ Version = Soror::VERSION
 
 options = { header: true, attributes: [], config: {}, credentials: {}, tag: {} }
 OptionParser.new do |opt|
-  opt.on('-t', '--tag=\'KEY=VALUE\'', /\A[^=]+=[^=]+\z/) do |v|
-    warn '[DEPRECATION] The option `--tag` will be removed, and `-t` will be assigned to `--tags`. Please use `--tags` instead.'
-    key, val = v.split('=')
-    options[:tag][key] = val
-  end
   opt.on(%q{--tags='KEY=VAL,KEY=VAL,...'}, Array) do |a|
     a.map{ |s| s.split('=') }.each{ |k, v| options[:tag][k] = v }
   end

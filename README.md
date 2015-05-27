@@ -42,7 +42,7 @@ In addition, Soror supports [a new and standardized way to manage credentials](h
 ```
 $ soror --help
 Usage: soror [options]
-        --tags='KEY=VAL,KEY=VAL,...'
+    -t, --tags='KEY=VAL,KEY=VAL,...'
     -a, --attributes=ATTR,ATTR,...
         --[no-]header
         --profile-name=NAME
