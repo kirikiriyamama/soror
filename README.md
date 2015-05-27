@@ -21,10 +21,10 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-# Search for EC2 instances which have the tag `{ "Key": "name", "Value": "soror" }`
+# Search for EC2 instances which have the tag `[{ "Key": "role", "Value": "app" }, { "Key": "stage", "Value": "production" }]`
 # You can use methods of Aws::EC2::Instance to an element of return value
 # See http://docs.aws.amazon.com/sdkforruby/api/Aws/EC2/Instance.html
-Soror::EC2::Instance.search_by(name: 'soror') #=> [<Aws::EC2::Instance>, ...]
+Soror::EC2::Instance.search_by(role: 'app', stage: 'production') #=> [<Aws::EC2::Instance>, ...]
 ```
 
 ### Configuration
@@ -42,7 +42,7 @@ In addition, Soror supports [a new and standardized way to manage credentials](h
 ```
 $ soror --help
 Usage: soror [options]
-    -t, --tag='KEY=VALUE'
+        --tags='KEY=VAL,KEY=VAL,...'
     -a, --attributes=ATTR,ATTR,...
         --[no-]header
         --profile-name=NAME
@@ -55,14 +55,14 @@ Usage: soror [options]
 ### Example
 
 ```
-$ soror --profile-name 'kirikiriyamama' --region 'ap-northeast-1' --tag 'name=soror' --attributes 'instance_id,public_ip_address'
+$ soror --tags 'role=app,stage=production' --attributes 'instance_id,public_ip_address' --profile-name 'kirikiriyamama' --region 'ap-northeast-1'
 instance_id public_ip_address
 i-xxxxx     xxx.xxx.xxx.xxx
 i-xxxxx     xxx.xxx.xxx.xxx
 ```
 
 ```
-$ ssh -i ~/.ssh/id_rsa ec2-user@$(soror --region 'ap-northeast-1' --tag 'key=value' --attributes 'public_ip_address' --no-header | peco)
+$ ssh -i ~/.ssh/id_rsa ec2-user@$(soror --tags 'role=app,stage=production' --attributes 'instance_id,public_ip_address' --profile-name 'kirikiriyamama' --region 'ap-northeast-1' --no-header | peco | awk '$0 = $2')
 ```
 
 ## Required permissions
