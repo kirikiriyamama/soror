@@ -1,4 +1,4 @@
-require 'aws-sdk'
+require 'aws-sdk-ec2'
 require 'forwardable'
 require 'soror/ec2'
 require 'soror/version'
