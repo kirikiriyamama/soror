@@ -25,10 +25,10 @@ $ gem install soror
 ## Usage
 
 ```ruby
-# Search for EC2 instances which have the tag `[{ "Key": "role", "Value": "app" }, { "Key": "stage", "Value": "production" }]`
-# You can use methods of Aws::EC2::Instance to an element of return value
-# See http://docs.aws.amazon.com/sdkforruby/api/Aws/EC2/Instance.html
-Soror::EC2::Instance.search_by(role: 'app', stage: 'production') #=> [<Aws::EC2::Instance>, ...]
+# Search for EC2 instances which have tags `[{ "Key": "role", "Value": "app" }, { "Key": "stage", "Value": "production" }]`
+# You can use methods of Aws::EC2::Types::Instance for each element
+# See http://docs.aws.amazon.com/sdkforruby/api/Aws/EC2/Types/Instance.html
+Soror.search_by(role: 'app', stage: 'production') #=> [<Aws::EC2::Types::Instance>, ...]
 ```
 
 ### Configuration
@@ -41,7 +41,7 @@ In addition, Soror supports [a new and standardized way to manage credentials](h
 
 ## CLI
 
-`ATTR` is an instance method name of `Aws::EC2::Instance`
+`ATTR` is an instance method name of `Aws::EC2::Types::Instance`
 
 ```
 $ soror --help
