@@ -5,9 +5,11 @@ require 'soror/version'
 class Soror
   class << self
     extend Forwardable
-
     def_delegators Aws, :config, :config=
-    def_delegators new, :search_by
+
+    def search_by(tags)
+      new.search_by(tags)
+    end
   end
 
   def initialize
