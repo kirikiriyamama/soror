@@ -2,7 +2,6 @@ require 'aws-sdk-ec2'
 require 'forwardable'
 require 'soror/ec2'
 require 'soror/version'
-require 'yaml'
 
 module Soror
   class << self
