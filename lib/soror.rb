@@ -1,5 +1,6 @@
-require 'aws-sdk-ec2'
 require 'forwardable'
+require 'aws-sdk-ec2'
+
 require 'soror/version'
 
 class Soror
