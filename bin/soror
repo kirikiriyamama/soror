@@ -27,7 +27,7 @@ unless options[:credentials].empty?
 end
 Soror.config.update(options[:config])
 
-instances = Soror::EC2::Instance.search_by(options[:tag])
+instances = Soror.search_by(options[:tag])
 exit! if instances.empty?
 
 result = instances.map{ |i| options[:attributes].map{ |a| i.send(a.intern) || '' } }
